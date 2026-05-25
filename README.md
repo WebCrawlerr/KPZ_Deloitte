@@ -1,97 +1,87 @@
-# KPZ_Deloitte – Aplikacja do zarządzania promptami (DeloiHub)
-Hakerzy nie kodują, piszą prompty.
-Aplikacja umożliwia tworzenie, wersjonowanie i współdzielenie promptów w środowisku chmurowym. Projekt został zbudowany z wykorzystaniem React + Vite oraz AWS Amplify, co zapewnia skalowalność i łatwość wdrożenia.
+# KPZ_Deloitte – Prompt Management Application (DeloiHub)
+Hackers don't code, they write prompts.
+The application allows for the creation, versioning, and sharing of prompts in a cloud environment. The project was built using React + Vite and AWS Amplify, ensuring scalability and ease of deployment.
 
-## 📦 Technologie
-Frontend: React + Vite + TypeScript
+## 📦 Technologies
+**Frontend:** React + Vite + TypeScript
 
-Backend: AWS Amplify (Cognito, AppSync, DynamoDB)
+**Backend:** AWS Amplify (Cognito, AppSync, DynamoDB)
 
-Hosting: AWS Amplify Hosting
+**Hosting:** AWS Amplify Hosting
 
-Zarządzanie stanem: React Context API
+**State Management:** React Context API
 
-## 🚀 Funkcje
-✅ Tworzenie i edycja promptów
+## 🚀 Features
+✅ Creating and editing prompts
 
-📜 Historia wersji z możliwością porównania zmian
+📜 Version history with the ability to compare changes
 
-👥 Współdzielenie promptów z innymi użytkownikami
+👥 Sharing prompts with other users
 
-🔐 Autoryzacja i uwierzytelnianie przez Amazon Cognito
+🔐 Authorization and authentication via Amazon Cognito
 
-☁️ Wdrożenie w chmurze AWS Amplify
+☁️ Cloud deployment on AWS Amplify
 
-## 🛠️ Instalacja i uruchomienie lokalne
-Klonowanie repozytorium:
-```
-git clone https://github.com/IwoStaykov/KPZ_Deloitte.git
+## 🛠️ Installation and Local Setup
+Clone the repository:
+```bash
+git clone [https://github.com/IwoStaykov/KPZ_Deloitte.git](https://github.com/IwoStaykov/KPZ_Deloitte.git)
 cd KPZ_Deloitte
 ```
 
-Instalacja zależności:
-```
+Install dependencies:
+```bash
 npm install
 ```
 
-Uruchomienie aplikacji:
-```
+Run the application:
+```bash
 npm run dev
 ```
 
-Aplikacja będzie dostępna pod adresem: http://localhost:5173
+The application will be available at: http://localhost:5173
 
-## 🌐 Wdrożenie w chmurze (AWS Amplify)
-Projekt jest zintegrowany z AWS Amplify, co umożliwia łatwe wdrożenie i skalowanie aplikacji. Plik amplify.yml zawiera konfigurację procesu CI/CD.
+## 🌐 Cloud Deployment (AWS Amplify)
+The project is integrated with AWS Amplify, enabling easy deployment and scalability of the application. The `amplify.yml` file contains the CI/CD pipeline configuration.
 
-Aby wdrożyć aplikację:
+To deploy the application:
 
-Zaloguj się do AWS Amplify Console.
+1. Log in to the AWS Amplify Console.
+2. Connect your GitHub repository and select the `dev` branch.
+3. Amplify will automatically build and deploy the application.
 
-Połącz repozytorium GitHub i wybierz gałąź dev.
-
-Amplify automatycznie zbuduje i wdroży aplikację.
-
-## 📁 Struktura projektu
+## 📁 Project Structure
 ```csharp
-
 KPZ_Deloitte/
-├── amplify/            # Konfiguracja AWS Amplify
-├── public/             # Pliki statyczne
-├── src/                # Kod źródłowy aplikacji
-│   ├── components/     # Komponenty React
-│   ├── pages/          # Strony aplikacji
-│   ├── types/          # Definicje typów TypeScript
-│   └── App.tsx         # Główny komponent aplikacji
-├── amplify.yml         # Konfiguracja Amplify CI/CD
-├── package.json        # Zależności projektu
-└── README.md           # Dokumentacja projektu
+├── amplify/            # AWS Amplify configuration
+├── public/             # Static files
+├── src/                # Application source code
+│   ├── components/     # React components
+│   ├── pages/          # Application pages
+│   ├── types/          # TypeScript type definitions
+│   └── App.tsx         # Main application component
+├── amplify.yml         # Amplify CI/CD configuration
+├── package.json        # Project dependencies
+└── README.md           # Project documentation
 ```
 
-## 🤝 Struktura repozytorium i zasady pracy
+## 🤝 Repository Structure and Workflow Guidelines
 
-W naszym repozytorium przyjęliśmy uporządkowany model pracy z gałęziami, oparty na podejściu Git Flow. Dzięki temu łatwiej nam rozwijać aplikację, testować nowe funkcjonalności i utrzymywać stabilność na głównej gałęzi produkcyjnej.
+In our repository, we have adopted an organized branching model based on the Git Flow approach. This makes it easier for us to develop the application, test new features, and maintain stability on the main production branch.
 
-### 📌 Gałęzie główne
-* main
+### 📌 Main Branches
+* **`main`**
+The primary production branch. Only stable, tested code goes here.
+Changes can only be integrated into `main` via pull requests from `dev`.
 
-Główna gałąź produkcyjna. Trafia tu wyłącznie stabilny, przetestowany kod.
+* **`dev`**
+The integration branch where we test new features. All completed features are merged here before being released to production.
 
-Zmiany mogą być integrowane z main tylko za pomocą pull requestów z dev.
+### 🌱 Working Branches
+* **`feature/feature-name`**
+New features are developed on separate branches starting with `feature/`, which branch off from `dev`.
+Once the work is completed and merged into `dev`, the branch can be deleted.
 
-* dev
-
-Gałąź integracyjna, na której testujemy nowe funkcje. To tu trafiają wszystkie zakończone funkcjonalności zanim zostaną wypuszczone na produkcję.
-
-### 🌱 Gałęzie robocze
-* feature/nazwa-funkcji
-
-Nowe funkcjonalności są rozwijane na osobnych gałęziach zaczynających się od feature/, które odchodzą od dev.
-
-Po zakończeniu pracy i zmergowaniu do dev, gałąź może zostać usunięta.
-
-* fix/nazwa-poprawki
-
-Gałęzie szybkich poprawek dla main, jeśli mimo procesu testowania wystąpił błąd na środowisku produkcyjnym.
-
-Te gałęzie również powinny być jak najszybciej integrowane i usuwane po zakończeniu prac.
+* **`fix/fix-name`**
+Hotfix branches for `main`, used if a bug occurs in the production environment despite the testing process.
+These branches should also be integrated and deleted as quickly as possible once the work is completed.
